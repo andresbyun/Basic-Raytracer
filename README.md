@@ -12,63 +12,63 @@ To compile this program I recommend having the CMake tools on Visual Studio to b
 project. The project is inside the "RayTracer" directory.
 
 To build this project follow these steps (specifically for a Windows environment):
-	1.	Open the project in Visual Studio.
-	2.	Make sure you have the CMake tools for Visual Studio on Windows. Otherwise, install them
+1.	Open the project in Visual Studio.
+2.	Make sure you have the CMake tools for Visual Studio on Windows. Otherwise, install them
 		by clicking on "Tools/Get Tools and Features..."
 		This should open the Visual Studio installer, click on "Modify" for your version of
 		Visual Studio, and then go to "Individual Components", search for CMake in the search bar.
 		Click the checkmark on the result and then hit "Modify" on the lower-right corner.
-	3.	Wait for CMake to finish generation and click on "CMakeLists.txt" in your Visual Studio
+3.	Wait for CMake to finish generation and click on "CMakeLists.txt" in your Visual Studio
 		project and ensure it is set to a Release configuration(Visual Studio sets it to Debug
 		by default).
-	4.	Right-click on the file "CMakeLists.txt", and click "Build".
-	5.	If all the CMake settings within Visual Studio are set to default:
+4.	Right-click on the file "CMakeLists.txt", and click "Build".
+5.	If all the CMake settings within Visual Studio are set to default:
 		This should create a new directory "out". To find the executable go inside
 		"out\build\<name of configuration>", in this directory you'll find the executable
 		"RayTracer.exe" for this assignment.
 
 If everything is set up correctly then run the program through the command line:
-	* `RayTracer.exe <file name>`
+* `RayTracer.exe <file name>`
 
 The program will output the message "File generation completed!" once the ppm file has been
 generated. The ppm file will be generated on the same directory as the executable.
 
 ### File input format:
 See the examples directory for the specifics.
-	* NEAR <`X`>: `X` is an integer that defines the near plane for the camera.
-	* LEFT <`X`>: `X` is an integer that defines the left plane for the camera.
-	* RIGHT <`X`>: `X` is an integer that defines the right plane for the camera.
-	* BOTTOM <`X`>: `X` is an integer that defines the bottom plane for the camera.
-	* TOP <`X`>: `X` is an integer that defines the top plane for the camera.
-	* RES <`X Y`>: `X Y` are integers that define the image resolution.
-	* SPHERE <`NAME PX PY PZ SX SY SZ R G B KA KD KS KR N`>: `NAME` is a string for the name of the sphere; `PX PY PZ` are integers that define position of the sphere; `SX SY SZ` are integers that define scale of the sphere; `KA KD KS KR` are numbers that define the coefficients for ambient, diffusion, specular and refraction properties for the sphere; `R G B` define the color of the sphere.
-	* LIGHT <`NAME X Y Z R G B`>: `NAME` is a string for the name of the light source; `X Y Z` are numbers that define the position and `R G B` define the color intensity of the light source.
-	* BACK <`R G B`>: `R G B` are integers that define the background color.
-	* AMBIENT <`R G B`>: `R G B` are integers that define the ambient intensity.
-	* OUTPUT <`NAME`>: `NAME` is a string for the name of the output image file.
+* NEAR <`X`>: `X` is an integer that defines the near plane for the camera.
+* LEFT <`X`>: `X` is an integer that defines the left plane for the camera.
+* RIGHT <`X`>: `X` is an integer that defines the right plane for the camera.
+* BOTTOM <`X`>: `X` is an integer that defines the bottom plane for the camera.
+* TOP <`X`>: `X` is an integer that defines the top plane for the camera.
+* RES <`X Y`>: `X Y` are integers that define the image resolution.
+* SPHERE <`NAME PX PY PZ SX SY SZ R G B KA KD KS KR N`>: `NAME` is a string for the name of the sphere; `PX PY PZ` are integers that define position of the sphere; `SX SY SZ` are integers that define scale of the sphere; `KA KD KS KR` are numbers that define the coefficients for ambient, diffusion, specular and refraction properties for the sphere; `R G B` define the color of the sphere.
+* LIGHT <`NAME X Y Z R G B`>: `NAME` is a string for the name of the light source; `X Y Z` are numbers that define the position and `R G B` define the color intensity of the light source.
+* BACK <`R G B`>: `R G B` are integers that define the background color.
+* AMBIENT <`R G B`>: `R G B` are integers that define the ambient intensity.
+* OUTPUT <`NAME`>: `NAME` is a string for the name of the output image file.
 
 
 The bulk of the code is found in the file "RayTracer.cpp". Supplementary classes can be found
 in the "util" directory:
-	* 	Sphere.cpp contains useful methods for computing the sphere intersections, sphere normal,
+* 	Sphere.cpp contains useful methods for computing the sphere intersections, sphere normal,
 		and helpful "getter" methods.
-	*	Ray.cpp contains some methods to get the fields, and a method that helps compute the
+*	Ray.cpp contains some methods to get the fields, and a method that helps compute the
 		refracted rays.
-	*	Light.cpp is a simple class that contains information about any light source.
-	*	file_io.cpp contains some useful methods that allow parsing through the file to get the
+*	Light.cpp is a simple class that contains information about any light source.
+*	file_io.cpp contains some useful methods that allow parsing through the file to get the
 		information about a scene. Additionally, it generates the ppm files as well.
 
 If properly compiled, this assignment submission should be able to generate all the 12 of test
 cases provided. Save for some negligible differences (See Notes).
 
 ## Notes:
-	*	For more information on CMake in Visual Studio for Windows:
+*	For more information on CMake in Visual Studio for Windows:
 		https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-160
-	*	The files output by this program are ppm files in the P6 format.
-	*	The images generated by this program might be a single pixel off,
+*	The files output by this program are ppm files in the P6 format.
+*	The images generated by this program might be a single pixel off,
 		the instructor has mentioned this is acceptable behavior during office hours.
-	*	As a convention, colours are represented by vec3.
-	*	With my set-up and targeting x86-Release, it takes about 2 seconds to generate the ppm
+*	As a convention, colours are represented by vec3.
+*	With my set-up and targeting x86-Release, it takes about 2 seconds to generate the ppm
 		file.
-	*	In "RayTracer.cpp", some global variables have been declared. This is an intentional
+*	In "RayTracer.cpp", some global variables have been declared. This is an intentional
 		design decision made to have easy-to-read code.
